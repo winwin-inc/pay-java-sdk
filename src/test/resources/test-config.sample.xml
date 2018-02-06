@@ -1,0 +1,10 @@
+<xml>
+    <apiBaseUri>https://api.cuntutu.com/pay/gateway</apiBaseUri>
+    <appId>应用ID</appId>
+    <appKey>应用密钥</appKey>
+    <deviceId>1</deviceId>
+    <version>1.0.0</version>
+
+    <!--<appId>12011590</appId>-->
+    <!--<appKey>c5d7abb0d1faea2d690f5ce970bbfdd4</appKey>-->
+</xml>
