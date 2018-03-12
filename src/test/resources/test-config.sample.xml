@@ -1,0 +1,9 @@
+<xml>
+    <apiBaseUri>https://api.cuntutu.com/pay/gateway</apiBaseUri>
+    <appId>12011823</appId>
+    <appKey>459edb2421de3239e64c1fa3fc2e210d</appKey>
+    <deviceId>souya_test</deviceId>
+    <version>1.0.0</version>
+    <!--<appId>12011590</appId>-->
+    <!--<appKey>c5d7abb0d1faea2d690f5ce970bbfdd4</appKey>-->
+</xml>
