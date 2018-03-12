@@ -1,6 +1,7 @@
 package com.winwin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
@@ -182,6 +183,10 @@ public class WsOrderPayRequest extends PayBaseRequest{
     @XStreamAlias("wx_miniappid")
     private String wxMiniappId;
 
+    public WsOrderPayRequest () {
+		this.setMethod(PayConstants.PayMethod.TRADE_WEIXIN_QR);
+	}
+
 	public String getOutTradeNo() {
 		return outTradeNo;
 	}
@@ -206,21 +211,21 @@ public class WsOrderPayRequest extends PayBaseRequest{
 		this.body = body;
 	}
 
-	public String getAuthCode() {
-		return authCode;
-	}
+//	public String getAuthCode() {
+//		return authCode;
+//	}
+//
+//	public void setAuthCode(String authCode) {
+//		this.authCode = authCode;
+//	}
 
-	public void setAuthCode(String authCode) {
-		this.authCode = authCode;
-	}
-
-	public String getOpUser() {
-		return opUser;
-	}
-
-	public void setOpUser(String opUser) {
-		this.opUser = opUser;
-	}
+//	public String getOpUser() {
+//		return opUser;
+//	}
+//
+//	public void setOpUser(String opUser) {
+//		this.opUser = opUser;
+//	}
 
 	public String getAttach() {
 		return attach;
@@ -262,13 +267,13 @@ public class WsOrderPayRequest extends PayBaseRequest{
 		this.goodsTag = goodsTag;
 	}
 
-	public String getLimitPay() {
-		return limitPay;
-	}
-
-	public void setLimitPay(String limitPay) {
-		this.limitPay = limitPay;
-	}
+//	public String getLimitPay() {
+//		return limitPay;
+//	}
+//
+//	public void setLimitPay(String limitPay) {
+//		this.limitPay = limitPay;
+//	}
 
 	public String getProductId() {
 		return productId;
@@ -286,21 +291,21 @@ public class WsOrderPayRequest extends PayBaseRequest{
 		this.notifyUrl = notifyUrl;
 	}
 
-	public String getOpenId() {
-		return openId;
-	}
+//	public String getOpenId() {
+//		return openId;
+//	}
+//
+//	public void setOpenId(String openId) {
+//		this.openId = openId;
+//	}
 
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
-
-	public String getWxMiniappId() {
-		return wxMiniappId;
-	}
-
-	public void setWxMiniappId(String wxMiniappId) {
-		this.wxMiniappId = wxMiniappId;
-	}
+//	public String getWxMiniappId() {
+//		return wxMiniappId;
+//	}
+//
+//	public void setWxMiniappId(String wxMiniappId) {
+//		this.wxMiniappId = wxMiniappId;
+//	}
 
 	@Override
 	protected void checkConstraints() throws PayException {

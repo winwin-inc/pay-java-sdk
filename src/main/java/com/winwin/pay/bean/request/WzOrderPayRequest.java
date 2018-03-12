@@ -1,6 +1,7 @@
 package com.winwin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
@@ -145,6 +146,10 @@ public class WzOrderPayRequest extends PayBaseRequest {
      */
     @XStreamAlias("auth_code")
     private String authCode;
+
+    public WzOrderPayRequest() {
+        this.setMethod(PayConstants.PayMethod.TRADE_WEIXIN_JSAPI);
+    }
 
     public String getAuthCode() {
         return authCode;

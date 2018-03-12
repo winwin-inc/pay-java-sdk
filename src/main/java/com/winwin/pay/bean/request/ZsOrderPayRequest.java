@@ -1,6 +1,7 @@
 package com.winwin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
@@ -122,13 +123,17 @@ public class ZsOrderPayRequest extends PayBaseRequest {
     @XStreamAlias("auth_code")
     private String authCode;
 
-    public String getAuthCode() {
-        return authCode;
+    public ZsOrderPayRequest (){
+        this.setMethod(PayConstants.PayMethod.TRADE_ALIPAY_QR);
     }
 
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
+//    public String getAuthCode() {
+//        return authCode;
+//    }
+//
+//    public void setAuthCode(String authCode) {
+//        this.authCode = authCode;
+//    }
 
     public String getOutTradeNo() {
         return outTradeNo;

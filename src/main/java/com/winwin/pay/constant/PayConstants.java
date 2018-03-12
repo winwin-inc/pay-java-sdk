@@ -80,6 +80,11 @@ public class PayConstants {
     public static final String JSAPI = "JSAPI";
 
     /**
+     * H5支付
+     */
+    public static final String MWEB = "MWEB";
+
+    /**
      * 刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
      */
     public static final String MICROPAY = "MICROPAY";
@@ -87,7 +92,11 @@ public class PayConstants {
 
   public static class PayMethod {
     public static final String TRADE_QUERY = "trade.query";
-    public static final String TRADE_MICROPAY = "trade.micropay";
+    public static final String TRADE_MICROPAY = "trade.micropay";//card
+    public static final String TRADE_ALIPAY_QR = "trade.alipay.qr";//zhifubaosaoma
+    public static final String TRADE_WEIXIN_QR = "trade.weixin.qr";//weixinsaoma
+    public static final String TRADE_ALIPAY_JSAPI = "trade.alipay.jsapi";//zhifubaochaungkou
+    public static final String TRADE_WEIXIN_JSAPI = "trade.weixin.jsapi";//weixingongzhonghao
   }
 
   /**

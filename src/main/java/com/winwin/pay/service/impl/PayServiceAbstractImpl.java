@@ -3,6 +3,9 @@ package com.winwin.pay.service.impl;
 import com.winwin.pay.bean.PayApiData;
 import com.winwin.pay.bean.request.*;
 import com.winwin.pay.bean.result.*;
+import com.winwin.pay.bean.request.PayOrderQueryRequest;
+import com.winwin.pay.bean.result.PayBaseResult;
+import com.winwin.pay.bean.result.PayOrderQueryResult;
 import com.winwin.pay.config.PayConfig;
 import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
@@ -59,7 +62,6 @@ public abstract class PayServiceAbstractImpl implements PayService {
     @Override
     public PayOrderQueryResult queryOrder(String transactionId) throws PayException {
         PayOrderQueryRequest request = new PayOrderQueryRequest();
-        request.setMethod(PayConstants.PayMethod.TRADE_QUERY);
         request.setTransactionId(StringUtils.trimToNull(transactionId));
         request.checkAndSign(this.getConfig());
 
@@ -84,22 +86,12 @@ public abstract class PayServiceAbstractImpl implements PayService {
 		return result;
     }
 
-    //微信公众号支付预下单
+    //微信公众号、小程序支付下单
     public WzOrderPayResult wzOrder(WzOrderPayRequest request) throws PayException{
         request.checkAndSign(this.getConfig());
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
         WzOrderPayResult result = PayBaseResult.fromXML(responseContent, WzOrderPayResult.class);
-        result.checkResult(this, request.getSignType(), true);
-        return result;
-    }
-
-    //微信小程序支付下单
-    public WpOrderPayResult wpOrder(WpOrderPayRequest request) throws PayException {
-        request.checkAndSign(this.getConfig());
-        String url = this.getPayBaseUrl();
-        String responseContent = this.post(url, request.toXML());
-        WpOrderPayResult result = PayBaseResult.fromXML(responseContent, WpOrderPayResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }

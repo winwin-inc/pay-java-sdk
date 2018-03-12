@@ -46,59 +46,52 @@ public class PayServiceApacheHttpImplTest {
     public void testWsPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         WsOrderPayRequest request = new WsOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("134595449339479507");
-        request.setTotalFee(1);
         request.setOutTradeNo(dateFormat.format(new Date()));
+        request.setTotalFee(1);
         request.setBody("test");
+        request.setSpbillCreateIp("10.0.0.1");
+        request.setNotifyUrl("http://test");
+        request.setNonceStr("");
         this.logger.info(this.payService.wsOrder(request).toString());
     }
 
-    //微信公众号预支付
+    //微信公众号、小程序预支付
     public void testWzPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         WzOrderPayRequest request = new WzOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
         request.setTotalFee(1);
+        request.setSpbillCreateIp("10.0.0.1");
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setBody("test");
+        request.setOpenId("oynvnwF3pn01WT_qXjbXeiDY6EJY");
+        request.setNotifyUrl("http://test");
         this.logger.info(this.payService.wzOrder(request).toString());
     }
 
     //微信小程序支付预下单
-    public void testWpPayOrder() throws PayException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        WpOrderPayRequest request = new WpOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
-        request.setTotalFee(1);
-        request.setOutTradeNo(dateFormat.format(new Date()));
-        request.setBody("test");
-        this.logger.info(this.payService.wpOrder(request).toString());
-    }
+//    public void testWpPayOrder() throws PayException {
+//        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+//        WpOrderPayRequest request = new WpOrderPayRequest();
+//        request
+//                .setSpbillCreateIp("10.0.0.1");
+//        request.setAuthCode("");
+//        request.setTotalFee(1);
+//        request.setOutTradeNo(dateFormat.format(new Date()));
+//        request.setBody("test");
+//        this.logger.info(this.payService.wpOrder(request).toString());
+//    }
 
     //刷卡支付
     public void testCardPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         CardOrderPayRequest request = new CardOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
-        request.setTotalFee(1);
         request.setOutTradeNo(dateFormat.format(new Date()));
+        request.setTotalFee(1);
         request.setBody("test");
+        request.setAuthCode("288330147885833047");
+        request.setOpUser("typ");
+        request.setSpbillCreateIp("10.0.0.1");
+        request.setNonceStr("test");
         this.logger.info(this.payService.cardOrder(request).toString());
     }
 
@@ -106,14 +99,12 @@ public class PayServiceApacheHttpImplTest {
     public void testZsPayOrder() throws  PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         ZsOrderPayRequest request = new ZsOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
-        request.setTotalFee(1);
         request.setOutTradeNo(dateFormat.format(new Date()));
+        request.setTotalFee(1);
         request.setBody("test");
+        request.setSpbillCreateIp("10.0.0.1");
+        request.setNotifyUrl("http://test");
+        request.setNonceStr("typ");
         this.logger.info(this.payService.zsOrder(request).toString());
     }
 
@@ -121,14 +112,13 @@ public class PayServiceApacheHttpImplTest {
     public void testZwPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         ZwOrderPayRequest request = new ZwOrderPayRequest();
-        request
-                .setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
-        request.setTotalFee(1);
         request.setOutTradeNo(dateFormat.format(new Date()));
+        request.setTotalFee(1);
         request.setBody("test");
+        request.setOpenId("2088102169853405");
+        request.setSpbillCreateIp("10.0.0.1");
+        request.setNotifyUrl("http://test");
+        request.setNonceStr("typ");
         this.logger.info(this.payService.zwOrder(request).toString());
     }
 }

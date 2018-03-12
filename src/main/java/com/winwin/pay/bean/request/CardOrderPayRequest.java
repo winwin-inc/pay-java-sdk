@@ -1,6 +1,7 @@
 package com.winwin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
@@ -146,6 +147,10 @@ public class CardOrderPayRequest extends PayBaseRequest {
      */
     @XStreamAlias("product_id")
     private String productId;
+
+    public CardOrderPayRequest() {
+        this.setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
+    }
 
     public String getOutTradeNo() {
         return outTradeNo;

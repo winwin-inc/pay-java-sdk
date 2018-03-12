@@ -162,7 +162,7 @@ public abstract class PayBaseRequest {
         return method;
     }
 
-    public void setMethod(String method) {
+    protected void setMethod(String method) {
         this.method = method;
     }
 

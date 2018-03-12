@@ -3,6 +3,7 @@ package com.winwin.pay.service;
 import com.winwin.pay.bean.PayApiData;
 import com.winwin.pay.bean.request.*;
 import com.winwin.pay.bean.result.*;
+import com.winwin.pay.bean.result.PayOrderQueryResult;
 import com.winwin.pay.config.PayConfig;
 import com.winwin.pay.exception.PayException;
 
@@ -65,7 +66,7 @@ public interface PayService {
      *
      * 微信小程序支付订单
      */
-    WpOrderPayResult wpOrder(WpOrderPayRequest request) throws PayException;
+    //WpOrderPayResult wpOrder(WpOrderPayRequest request) throws PayException;
 
     /**
      *
