@@ -5,7 +5,7 @@ import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
-public class WzOrderPayRequest extends PayBaseRequest {
+public class WeixinJsPayRequest extends PayBaseRequest {
     /**
      * <pre>
      * 商户订单号
@@ -147,7 +147,7 @@ public class WzOrderPayRequest extends PayBaseRequest {
     @XStreamAlias("auth_code")
     private String authCode;
 
-    public WzOrderPayRequest() {
+    public WeixinJsPayRequest() {
         this.setMethod(PayConstants.PayMethod.TRADE_WEIXIN_JSAPI);
     }
 

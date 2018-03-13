@@ -5,7 +5,7 @@ import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
-public class CardOrderPayRequest extends PayBaseRequest {
+public class AlipayJsPayRequest extends PayBaseRequest{
     /**
      * <pre>
      * 商户订单号
@@ -43,27 +43,15 @@ public class CardOrderPayRequest extends PayBaseRequest {
 
     /**
      * <pre>
-     * 授权码
-     * auth_code
+     * 用户标识
+     * openid
      * String(128)
-     * 134765033631695703
-     * 扫码支付授权码
+     * 2088102169853405
+     * 支付宝用户ID
      * </pre>
      */
-    @XStreamAlias("auth_code")
-    private String authCode;
-
-    /**
-     * <pre>
-     * 操作员
-     * op_user
-     * String(32)
-     * 1323
-     * 操作员账号
-     * </pre>
-     */
-    @XStreamAlias("op_user")
-    private String opUser;
+    @XStreamAlias("openid")
+    private String openId;
 
     /**
      * <pre>
@@ -87,6 +75,18 @@ public class CardOrderPayRequest extends PayBaseRequest {
      */
     @XStreamAlias("spbill_create_ip")
     private String spbillCreateIp;
+
+    /**
+     * <pre>
+     * 通知地址
+     * notify_url
+     * String(255)
+     * http://notify_url.demo
+     * 接收异步通知的URL，需给绝对路径
+     * </pre>
+     */
+    @XStreamAlias("notify_url")
+    private String notifyUrl;
 
     /**
      * <pre>
@@ -125,32 +125,27 @@ public class CardOrderPayRequest extends PayBaseRequest {
 
     /**
      * <pre>
-     * 是否限制信用卡
-     * limit_pay
-     * String(32)
-     * no_credit
-     * 指定不能使用信用卡支付
-     * </pre>
-
-     */
-    @XStreamAlias("limit_pay")
-    private String limitPay;
-
-    /**
-     * <pre>
-     * 商品ID
-     * product_id
-     * String(32)
-     * 12235413214070356458058
-     * 预留字段此 id 为静态可打印的二维码中包含的商品 ID，商户自行维护
+     * 授权码
+     * auth_code
+     * String(128)
+     * 134765033631695703
+     * 扫码支付授权码
      * </pre>
      */
-    @XStreamAlias("product_id")
-    private String productId;
+    @XStreamAlias("auth_code")
+    private String authCode;
 
-    public CardOrderPayRequest() {
-        this.setMethod(PayConstants.PayMethod.TRADE_MICROPAY);
+    public AlipayJsPayRequest() {
+        this.setMethod(PayConstants.PayMethod.TRADE_ALIPAY_JSAPI);
     }
+
+//    public String getAuthCode() {
+//        return authCode;
+//    }
+//
+//    public void setAuthCode(String authCode) {
+//        this.authCode = authCode;
+//    }
 
     public String getOutTradeNo() {
         return outTradeNo;
@@ -176,20 +171,12 @@ public class CardOrderPayRequest extends PayBaseRequest {
         this.body = body;
     }
 
-    public String getAuthCode() {
-        return authCode;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
-
-    public String getOpUser() {
-        return opUser;
-    }
-
-    public void setOpUser(String opUser) {
-        this.opUser = opUser;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getAttach() {
@@ -206,6 +193,14 @@ public class CardOrderPayRequest extends PayBaseRequest {
 
     public void setSpbillCreateIp(String spbillCreateIp) {
         this.spbillCreateIp = spbillCreateIp;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
     }
 
     public String getTimeStart() {
@@ -230,22 +225,6 @@ public class CardOrderPayRequest extends PayBaseRequest {
 
     public void setGoodsTag(String goodsTag) {
         this.goodsTag = goodsTag;
-    }
-
-    public String getLimitPay() {
-        return limitPay;
-    }
-
-    public void setLimitPay(String limitPay) {
-        this.limitPay = limitPay;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     @Override

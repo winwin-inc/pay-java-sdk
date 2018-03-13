@@ -2,7 +2,6 @@ package com.winwin.pay.service.impl;
 
 import com.google.inject.Inject;
 import com.winwin.pay.bean.request.*;
-import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 import com.winwin.pay.service.PayService;
 import com.winwin.pay.testbase.ApiTestModule;
@@ -45,46 +44,46 @@ public class PayServiceApacheHttpImplTest {
     //微信扫码支付
     public void testWsPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        WsOrderPayRequest request = new WsOrderPayRequest();
+        WeixinQrPayRequest request = new WeixinQrPayRequest();
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
         request.setSpbillCreateIp("10.0.0.1");
         request.setNotifyUrl("http://test");
         request.setNonceStr("");
-        this.logger.info(this.payService.wsOrder(request).toString());
+        this.logger.info(this.payService.weixinQrPay(request).toString());
     }
 
     //微信公众号、小程序预支付
     public void testWzPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        WzOrderPayRequest request = new WzOrderPayRequest();
+        WeixinJsPayRequest request = new WeixinJsPayRequest();
         request.setTotalFee(1);
         request.setSpbillCreateIp("10.0.0.1");
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setBody("test");
         request.setOpenId("oynvnwF3pn01WT_qXjbXeiDY6EJY");
         request.setNotifyUrl("http://test");
-        this.logger.info(this.payService.wzOrder(request).toString());
+        this.logger.info(this.payService.weixinJsPay(request).toString());
     }
 
     //微信小程序支付预下单
-//    public void testWpPayOrder() throws PayException {
-//        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-//        WpOrderPayRequest request = new WpOrderPayRequest();
-//        request
-//                .setSpbillCreateIp("10.0.0.1");
-//        request.setAuthCode("");
-//        request.setTotalFee(1);
-//        request.setOutTradeNo(dateFormat.format(new Date()));
-//        request.setBody("test");
-//        this.logger.info(this.payService.wpOrder(request).toString());
-//    }
+    public void testWxMiniAppPayOrder() throws PayException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        WeixinJsPayRequest request = new WeixinJsPayRequest();
+        request
+                .setSpbillCreateIp("10.0.0.1");
+        request.setAuthCode("");
+        request.setTotalFee(1);
+        request.setOutTradeNo(dateFormat.format(new Date()));
+        request.setBody("test");
+        this.logger.info(this.payService.weixinJsPay(request).toString());
+    }
 
     //刷卡支付
     public void testCardPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        CardOrderPayRequest request = new CardOrderPayRequest();
+        MicropayRequest request = new MicropayRequest();
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
@@ -92,26 +91,26 @@ public class PayServiceApacheHttpImplTest {
         request.setOpUser("typ");
         request.setSpbillCreateIp("10.0.0.1");
         request.setNonceStr("test");
-        this.logger.info(this.payService.cardOrder(request).toString());
+        this.logger.info(this.payService.micropay(request).toString());
     }
 
     //支付宝扫码支付
     public void testZsPayOrder() throws  PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        ZsOrderPayRequest request = new ZsOrderPayRequest();
+        AlipayQrPayRequest request = new AlipayQrPayRequest();
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
         request.setSpbillCreateIp("10.0.0.1");
         request.setNotifyUrl("http://test");
         request.setNonceStr("typ");
-        this.logger.info(this.payService.zsOrder(request).toString());
+        this.logger.info(this.payService.alipayQrPay(request).toString());
     }
 
     //支付宝窗口支付
     public void testZwPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        ZwOrderPayRequest request = new ZwOrderPayRequest();
+        AlipayJsPayRequest request = new AlipayJsPayRequest();
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
@@ -119,6 +118,6 @@ public class PayServiceApacheHttpImplTest {
         request.setSpbillCreateIp("10.0.0.1");
         request.setNotifyUrl("http://test");
         request.setNonceStr("typ");
-        this.logger.info(this.payService.zwOrder(request).toString());
+        this.logger.info(this.payService.alipayJsPay(request).toString());
     }
 }

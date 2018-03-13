@@ -3,7 +3,7 @@ package com.winwin.pay.bean.result;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("xml")
-public class WsOrderPayResult extends PayBaseResult{
+public class WeixinQrPayResult extends PayBaseResult{
     /**
      * <pre>设备号
      * out_transaction_id

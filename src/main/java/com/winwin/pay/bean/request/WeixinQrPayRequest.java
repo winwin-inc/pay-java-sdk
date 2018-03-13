@@ -5,7 +5,7 @@ import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
-public class WsOrderPayRequest extends PayBaseRequest{
+public class WeixinQrPayRequest extends PayBaseRequest{
     /**
      * <pre>
      * 商户订单号
@@ -183,7 +183,7 @@ public class WsOrderPayRequest extends PayBaseRequest{
     @XStreamAlias("wx_miniappid")
     private String wxMiniappId;
 
-    public WsOrderPayRequest () {
+    public WeixinQrPayRequest() {
 		this.setMethod(PayConstants.PayMethod.TRADE_WEIXIN_QR);
 	}
 

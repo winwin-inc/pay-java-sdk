@@ -45,38 +45,33 @@ public interface PayService {
     PayOrderQueryResult queryOrder(String transactionId) throws PayException;
 
     /**
-     *
-     * 刷卡支付订单
+     * <pre>
+     * 刷卡支付(详见 http://open.banmahui.cn/openapi/trade.micropay.html)
+     * </pre>
      */
-    CardOrderPayResult cardOrder(CardOrderPayRequest request) throws PayException;
+    MicropayResult micropay(MicropayRequest request) throws PayException;
 
     /**
      *
      * 微信扫码支付订单
      */
-    WsOrderPayResult wsOrder(WsOrderPayRequest request) throws PayException;
+    WeixinQrPayResult weixinQrPay(WeixinQrPayRequest request) throws PayException;
 
     /**
      *
      * 微信公众号支付订单
      */
-    WzOrderPayResult wzOrder(WzOrderPayRequest request) throws PayException;
-
-    /**
-     *
-     * 微信小程序支付订单
-     */
-    //WpOrderPayResult wpOrder(WpOrderPayRequest request) throws PayException;
+    WeixinJsPayResult weixinJsPay(WeixinJsPayRequest request) throws PayException;
 
     /**
      *
      * 支付宝扫码支付订单
      */
-    ZsOrderPayResult zsOrder(ZsOrderPayRequest request) throws PayException;
+    AlipayQrPayResult alipayQrPay(AlipayQrPayRequest request) throws PayException;
 
     /**
      *
      * 支付宝服务窗口支付订单
      */
-    ZwOrderPayResult zwOrder(ZwOrderPayRequest request) throws PayException;
+    AlipayJsPayResult alipayJsPay(AlipayJsPayRequest request) throws PayException;
 }

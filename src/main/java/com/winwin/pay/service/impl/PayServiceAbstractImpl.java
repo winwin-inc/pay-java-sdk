@@ -7,7 +7,6 @@ import com.winwin.pay.bean.request.PayOrderQueryRequest;
 import com.winwin.pay.bean.result.PayBaseResult;
 import com.winwin.pay.bean.result.PayOrderQueryResult;
 import com.winwin.pay.config.PayConfig;
-import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 import com.winwin.pay.service.PayService;
 import org.apache.commons.lang3.StringUtils;
@@ -77,51 +76,51 @@ public abstract class PayServiceAbstractImpl implements PayService {
     }
 
     //微信扫码支付订单
-    public WsOrderPayResult wsOrder(WsOrderPayRequest request) throws PayException {
+    public WeixinQrPayResult weixinQrPay(WeixinQrPayRequest request) throws PayException {
     	request.checkAndSign(this.getConfig());
     	String url = this.getPayBaseUrl();
     	String responseContent = this.post(url, request.toXML());
-    	WsOrderPayResult result = PayBaseResult.fromXML(responseContent, WsOrderPayResult.class);
+    	WeixinQrPayResult result = PayBaseResult.fromXML(responseContent, WeixinQrPayResult.class);
     	result.checkResult(this, request.getSignType(), true);
 		return result;
     }
 
     //微信公众号、小程序支付下单
-    public WzOrderPayResult wzOrder(WzOrderPayRequest request) throws PayException{
+    public WeixinJsPayResult weixinJsPay(WeixinJsPayRequest request) throws PayException{
         request.checkAndSign(this.getConfig());
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
-        WzOrderPayResult result = PayBaseResult.fromXML(responseContent, WzOrderPayResult.class);
+        WeixinJsPayResult result = PayBaseResult.fromXML(responseContent, WeixinJsPayResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }
 
     //刷卡支付订单
-    public CardOrderPayResult cardOrder(CardOrderPayRequest request) throws  PayException{
+    public MicropayResult micropay(MicropayRequest request) throws  PayException{
         request.checkAndSign(this.getConfig());
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
-        CardOrderPayResult result = PayBaseResult.fromXML(responseContent, CardOrderPayResult.class);
+        MicropayResult result = PayBaseResult.fromXML(responseContent, MicropayResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }
 
     //支付宝扫码支付
-    public ZsOrderPayResult zsOrder(ZsOrderPayRequest request) throws  PayException{
+    public AlipayQrPayResult alipayQrPay(AlipayQrPayRequest request) throws  PayException{
         request.checkAndSign(this.getConfig());
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
-        ZsOrderPayResult result = PayBaseResult.fromXML(responseContent, ZsOrderPayResult.class);
+        AlipayQrPayResult result = PayBaseResult.fromXML(responseContent, AlipayQrPayResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }
 
     //支付宝窗口支付
-    public ZwOrderPayResult zwOrder(ZwOrderPayRequest request) throws PayException {
+    public AlipayJsPayResult alipayJsPay(AlipayJsPayRequest request) throws PayException {
         request.checkAndSign(this.getConfig());
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
-        ZwOrderPayResult result = PayBaseResult.fromXML(responseContent, ZwOrderPayResult.class);
+        AlipayJsPayResult result = PayBaseResult.fromXML(responseContent, AlipayJsPayResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }

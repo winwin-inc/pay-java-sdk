@@ -1,10 +1,11 @@
 package com.winwin.pay.bean.request;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 
 @XStreamAlias("xml")
-public class WpOrderPayRequest extends PayBaseRequest {
+public class AlipayQrPayRequest extends PayBaseRequest {
     /**
      * <pre>
      * 商户订单号
@@ -39,18 +40,6 @@ public class WpOrderPayRequest extends PayBaseRequest {
      */
     @XStreamAlias("body")
     private String body;
-
-    /**
-     * <pre>
-     * 用户标识
-     * openid
-     * String(128)
-     * 2088102169853405
-     * 支付宝用户ID
-     * </pre>
-     */
-    @XStreamAlias("openid")
-    private String openId;
 
     /**
      * <pre>
@@ -124,30 +113,6 @@ public class WpOrderPayRequest extends PayBaseRequest {
 
     /**
      * <pre>
-     * 是否限制信用卡
-     * limit_pay
-     * String(32)
-     * no_credit
-     * 指定不能使用信用卡支付
-     * </pre>
-     */
-    @XStreamAlias("limit_pay")
-    private String limitPay;
-
-    /**
-     * <pre>
-     * 小程序	ID
-     * wx_miniappid
-     * String(32)
-     * wxd678efh567hg6787
-     * 微信分配的小程序ID
-     * </pre>
-     */
-    @XStreamAlias("wx_miniappid")
-    private String wxMiniappId;
-
-    /**
-     * <pre>
      * 授权码
      * auth_code
      * String(128)
@@ -158,13 +123,17 @@ public class WpOrderPayRequest extends PayBaseRequest {
     @XStreamAlias("auth_code")
     private String authCode;
 
-    public String getAuthCode() {
-        return authCode;
+    public AlipayQrPayRequest(){
+        this.setMethod(PayConstants.PayMethod.TRADE_ALIPAY_QR);
     }
 
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
-    }
+//    public String getAuthCode() {
+//        return authCode;
+//    }
+//
+//    public void setAuthCode(String authCode) {
+//        this.authCode = authCode;
+//    }
 
     public String getOutTradeNo() {
         return outTradeNo;
@@ -188,14 +157,6 @@ public class WpOrderPayRequest extends PayBaseRequest {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getOpenId() {
-        return openId;
-    }
-
-    public void setOpenId(String openId) {
-        this.openId = openId;
     }
 
     public String getAttach() {
@@ -244,22 +205,6 @@ public class WpOrderPayRequest extends PayBaseRequest {
 
     public void setGoodsTag(String goodsTag) {
         this.goodsTag = goodsTag;
-    }
-
-    public String getLimitPay() {
-        return limitPay;
-    }
-
-    public void setLimitPay(String limitPay) {
-        this.limitPay = limitPay;
-    }
-
-    public String getWxMiniappId() {
-        return wxMiniappId;
-    }
-
-    public void setWxMiniappId(String wxMiniappId) {
-        this.wxMiniappId = wxMiniappId;
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.winwin.pay.bean.result;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("xml")
-public class ZwOrderPayResult extends PayBaseResult {
+public class AlipayJsPayResult extends PayBaseResult {
     /**
      * 支付宝订单号
      * trade_no
