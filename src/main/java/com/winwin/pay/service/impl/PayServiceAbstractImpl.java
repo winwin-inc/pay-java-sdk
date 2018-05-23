@@ -101,6 +101,9 @@ public abstract class PayServiceAbstractImpl implements PayService {
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
         MicropayResult result = PayBaseResult.fromXML(responseContent, MicropayResult.class);
+        if (result.getErrCode() != null && result.getErrCode().equals("USERPAYING")) {
+            return result;
+        }
         result.checkResult(this, request.getSignType(), true);
         return result;
     }

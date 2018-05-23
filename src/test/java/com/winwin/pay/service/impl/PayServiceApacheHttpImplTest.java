@@ -87,7 +87,7 @@ public class PayServiceApacheHttpImplTest {
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
-        request.setAuthCode("288330147885833047");
+        request.setAuthCode("134556974015935669");
         request.setOpUser("typ");
         request.setSpbillCreateIp("10.0.0.1");
         request.setNonceStr("test");
