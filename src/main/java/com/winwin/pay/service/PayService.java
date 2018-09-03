@@ -39,10 +39,8 @@ public interface PayService {
      * ◆ 调用被扫支付API，返回USERPAYING的状态；
      * ◆ 调用关单或撤销接口API之前，需确认支付状态；
      * </pre>
-     *
-     * @param transactionId 平台订单号
      */
-    PayOrderQueryResult queryOrder(String transactionId) throws PayException;
+    PayOrderQueryResult queryOrder(PayOrderQueryRequest request) throws PayException;
 
     /**
      * <pre>
@@ -74,4 +72,6 @@ public interface PayService {
      * 支付宝服务窗口支付订单
      */
     AlipayJsPayResult alipayJsPay(AlipayJsPayRequest request) throws PayException;
+
+    BillDownloadResult downloadBill(BillDownloadRequest request) throws PayException;
 }

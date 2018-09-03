@@ -1,7 +1,7 @@
 package com.winwin.pay.exception;
 
 import com.google.common.base.Joiner;
-import com.winwin.pay.bean.result.PayBaseResult;
+import com.winwin.pay.bean.result.BaseResult;
 
 /**
  * <pre>
@@ -60,7 +60,7 @@ public class PayException extends Exception {
     xmlString = builder.xmlString;
   }
 
-  public static PayException from(PayBaseResult payBaseResult) {
+  public static PayException from(BaseResult payBaseResult) {
     return PayException.newBuilder()
       .xmlString(payBaseResult.getXmlString())
       .returnMsg(payBaseResult.getReturnMsg())

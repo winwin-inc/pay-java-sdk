@@ -2,6 +2,7 @@ package com.winwin.pay.service.impl;
 
 import com.google.inject.Inject;
 import com.winwin.pay.bean.request.*;
+import com.winwin.pay.constant.PayConstants;
 import com.winwin.pay.exception.PayException;
 import com.winwin.pay.service.PayService;
 import com.winwin.pay.testbase.ApiTestModule;
@@ -29,17 +30,15 @@ public class PayServiceApacheHttpImplTest {
     private PayService payService;
 
     /**
-     * Test method for {@link PayService#queryOrder(String)} .
+     * Test method for {@link PayService#queryOrder(PayOrderQueryRequest)} .
      */
     @Test
     public void testQueryOrder() throws PayException {
-        this.logger.info(this.payService.queryOrder("18030714450985124644").toString());
+        PayOrderQueryRequest request = new PayOrderQueryRequest();
+        request.setOutTradeNo("20180903162307");
+        this.logger.info(this.payService.queryOrder(request).toString());
     }
 
-
-    /**
-     * Test method for {@link PayService#queryOrder(String)} .
-     */
     @Test
     //微信扫码支付
     public void testWsPayOrder() throws PayException {
@@ -87,7 +86,7 @@ public class PayServiceApacheHttpImplTest {
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setTotalFee(1);
         request.setBody("test");
-        request.setAuthCode("134556974015935669");
+        request.setAuthCode("134735793063467975");
         request.setOpUser("typ");
         request.setSpbillCreateIp("10.0.0.1");
         request.setNonceStr("test");
@@ -119,5 +118,12 @@ public class PayServiceApacheHttpImplTest {
         request.setNotifyUrl("http://test");
         request.setNonceStr("typ");
         this.logger.info(this.payService.alipayJsPay(request).toString());
+    }
+
+    public void testDownloadBill() throws PayException {
+        BillDownloadRequest request = new BillDownloadRequest();
+        request.setBillDate("20180902");
+        request.setType(PayConstants.BillDownloadType.CONTENT);
+        this.logger.info(this.payService.downloadBill(request).toString());
     }
 }

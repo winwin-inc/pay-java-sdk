@@ -2,7 +2,6 @@ package com.winwin.pay.util;
 
 import com.google.common.collect.Lists;
 import com.winwin.pay.constant.PayConstants;
-import me.chanjar.weixin.common.util.BeanUtils;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;

@@ -61,6 +61,10 @@ public class PayOrderQueryRequest extends PayBaseRequest {
     @XStreamAlias("out_trade_no")
     private String outTradeNo;
 
+    public PayOrderQueryRequest() {
+        setMethod("trade.query");
+    }
+
     public String getTransactionId() {
         return transactionId;
     }

@@ -2,23 +2,15 @@ package com.winwin.pay.service.impl;
 
 import com.winwin.pay.bean.PayApiData;
 import com.winwin.pay.exception.PayException;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ssl.DefaultHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import javax.net.ssl.SSLContext;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -57,5 +49,4 @@ public class PayServiceApacheHttpImpl extends PayServiceAbstractImpl {
             throw new PayException(e.getMessage(), e);
         }
     }
-
 }

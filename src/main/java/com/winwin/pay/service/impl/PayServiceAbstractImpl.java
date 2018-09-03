@@ -59,9 +59,7 @@ public abstract class PayServiceAbstractImpl implements PayService {
     protected abstract String post(String url, String requestStr) throws PayException;
 
     @Override
-    public PayOrderQueryResult queryOrder(String transactionId) throws PayException {
-        PayOrderQueryRequest request = new PayOrderQueryRequest();
-        request.setTransactionId(StringUtils.trimToNull(transactionId));
+    public PayOrderQueryResult queryOrder(PayOrderQueryRequest request) throws PayException {
         request.checkAndSign(this.getConfig());
 
         String url = this.getPayBaseUrl();
@@ -124,6 +122,16 @@ public abstract class PayServiceAbstractImpl implements PayService {
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
         AlipayJsPayResult result = PayBaseResult.fromXML(responseContent, AlipayJsPayResult.class);
+        result.checkResult(this, request.getSignType(), true);
+        return result;
+    }
+
+    @Override
+    public BillDownloadResult downloadBill(BillDownloadRequest request) throws PayException {
+        request.checkAndSign(this.getConfig());
+        String url = this.getPayBaseUrl();
+        String responseContent = this.post(url, request.toXML());
+        BillDownloadResult result = PayBaseResult.fromXML(responseContent, BillDownloadResult.class);
         result.checkResult(this, request.getSignType(), true);
         return result;
     }

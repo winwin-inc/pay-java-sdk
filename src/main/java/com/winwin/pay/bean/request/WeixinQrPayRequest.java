@@ -43,30 +43,6 @@ public class WeixinQrPayRequest extends PayBaseRequest{
     
     /**
      * <pre>
-     * 授权码	
-     * auth_code
-     * String(128)
-     * 134765033631695703
-     * 扫码支付授权码
-     * </pre>
-     */
-    @XStreamAlias("auth_code")
-    private String authCode;
-    
-    /**
-     * <pre>
-     * 操作员		
-     * op_user
-     * String(32)
-     * 1323
-     * 操作员账号
-     * </pre>
-     */
-    @XStreamAlias("op_user")
-    private String opUser;
-    
-    /**
-     * <pre>
      * 附加信息	
      * attach
      * String(128)
@@ -161,18 +137,6 @@ public class WeixinQrPayRequest extends PayBaseRequest{
     
     /**
      * <pre>
-     * 用户标识	
-     * openid
-     * String(128)
-     * 2088102169853405
-     * 支付宝用户ID
-     * </pre>
-     */
-    @XStreamAlias("openid")
-    private String openId;
-    
-    /**
-     * <pre>
      * 小程序	ID
      * wx_miniappid
      * String(32)
@@ -210,22 +174,6 @@ public class WeixinQrPayRequest extends PayBaseRequest{
 	public void setBody(String body) {
 		this.body = body;
 	}
-
-//	public String getAuthCode() {
-//		return authCode;
-//	}
-//
-//	public void setAuthCode(String authCode) {
-//		this.authCode = authCode;
-//	}
-
-//	public String getOpUser() {
-//		return opUser;
-//	}
-//
-//	public void setOpUser(String opUser) {
-//		this.opUser = opUser;
-//	}
 
 	public String getAttach() {
 		return attach;
@@ -267,14 +215,6 @@ public class WeixinQrPayRequest extends PayBaseRequest{
 		this.goodsTag = goodsTag;
 	}
 
-//	public String getLimitPay() {
-//		return limitPay;
-//	}
-//
-//	public void setLimitPay(String limitPay) {
-//		this.limitPay = limitPay;
-//	}
-
 	public String getProductId() {
 		return productId;
 	}
@@ -291,25 +231,15 @@ public class WeixinQrPayRequest extends PayBaseRequest{
 		this.notifyUrl = notifyUrl;
 	}
 
-//	public String getOpenId() {
-//		return openId;
-//	}
-//
-//	public void setOpenId(String openId) {
-//		this.openId = openId;
-//	}
+	public String getWxMiniappId() {
+		return wxMiniappId;
+	}
 
-//	public String getWxMiniappId() {
-//		return wxMiniappId;
-//	}
-//
-//	public void setWxMiniappId(String wxMiniappId) {
-//		this.wxMiniappId = wxMiniappId;
-//	}
+	public void setWxMiniappId(String wxMiniappId) {
+		this.wxMiniappId = wxMiniappId;
+	}
 
 	@Override
 	protected void checkConstraints() throws PayException {
-		// TODO Auto-generated method stub
-		
 	}
 }

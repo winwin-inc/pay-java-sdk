@@ -283,4 +283,19 @@ public class PayConstants {
      */
     public static final String TRADE_STATE_ERROR = "TRADE_STATE_ERROR";
   }
+
+  /**
+   * 账单下载方式
+   */
+  public static class BillDownloadType {
+    /**
+     * 账单内容
+     */
+    public static final int CONTENT = 1;
+
+    /**
+     * 账单下载链接
+     */
+    public static final int DOWNLOAD_URL = 2;
+  }
 }
