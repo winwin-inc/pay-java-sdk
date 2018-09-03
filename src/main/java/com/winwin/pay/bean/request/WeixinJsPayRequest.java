@@ -135,28 +135,8 @@ public class WeixinJsPayRequest extends PayBaseRequest {
     @XStreamAlias("limit_pay")
     private String limitPay;
 
-    /**
-     * <pre>
-     * 授权码
-     * auth_code
-     * String(128)
-     * 134765033631695703
-     * 扫码支付授权码
-     * </pre>
-     */
-    @XStreamAlias("auth_code")
-    private String authCode;
-
     public WeixinJsPayRequest() {
         this.setMethod(PayConstants.PayMethod.TRADE_WEIXIN_JSAPI);
-    }
-
-    public String getAuthCode() {
-        return authCode;
-    }
-
-    public void setAuthCode(String authCode) {
-        this.authCode = authCode;
     }
 
     public String getOutTradeNo() {

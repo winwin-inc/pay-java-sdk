@@ -70,12 +70,12 @@ public class PayServiceApacheHttpImplTest {
     public void testWxMiniAppPayOrder() throws PayException {
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         WeixinJsPayRequest request = new WeixinJsPayRequest();
-        request
-                .setSpbillCreateIp("10.0.0.1");
-        request.setAuthCode("");
+        request.setSpbillCreateIp("10.0.0.1");
         request.setTotalFee(1);
         request.setOutTradeNo(dateFormat.format(new Date()));
         request.setBody("test");
+        request.setOpenId("oynvnwF3pn01WT_qXjbXeiDY6EJY");
+        request.setNotifyUrl("http://17.yikuaigao.com");
         this.logger.info(this.payService.weixinJsPay(request).toString());
     }
 
