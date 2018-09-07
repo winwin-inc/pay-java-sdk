@@ -132,6 +132,9 @@ public abstract class PayServiceAbstractImpl implements PayService {
         String url = this.getPayBaseUrl();
         String responseContent = this.post(url, request.toXML());
         BillDownloadResult result = PayBaseResult.fromXML(responseContent, BillDownloadResult.class);
+        if (result.getContent() != null) {
+            result.setContent(result.getContent().replace("\n", "\r\n"));
+        }
         result.checkResult(this, request.getSignType(), true);
         return result;
     }

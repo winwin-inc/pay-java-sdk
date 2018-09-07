@@ -122,7 +122,7 @@ public class PayServiceApacheHttpImplTest {
 
     public void testDownloadBill() throws PayException {
         BillDownloadRequest request = new BillDownloadRequest();
-        request.setBillDate("20180902");
+        request.setBillDate("20180906");
         request.setType(PayConstants.BillDownloadType.CONTENT);
         this.logger.info(this.payService.downloadBill(request).toString());
     }
