@@ -195,7 +195,7 @@ public abstract class BaseResult {
     /**
      * 将bean通过保存的xml字符串转换成map
      */
-    public Map<String, String> toMap() {
+    protected Map<String, String> toMap() {
         if (StringUtils.isBlank(this.xmlString)) {
             throw new RuntimeException("xml数据有问题，请核实！");
         }

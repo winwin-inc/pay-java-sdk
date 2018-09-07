@@ -2,6 +2,8 @@ package com.winwin.pay.bean.result;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import java.util.Map;
+
 @XStreamAlias("xml")
 public class BillDownloadResult extends BaseResult {
     /**
@@ -29,5 +31,13 @@ public class BillDownloadResult extends BaseResult {
 
     public void setDownloadUrl(String downloadUrl) {
         this.downloadUrl = downloadUrl;
+    }
+
+    protected Map<String, String> toMap() {
+        Map<String, String> result = super.toMap();
+        if (result.containsKey("content")) {
+            result.put("content", result.get("content").replace("\n", "\r\n"));
+        }
+        return result;
     }
 }
